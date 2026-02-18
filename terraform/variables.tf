@@ -14,6 +14,7 @@ variable "environment" {
 variable "bucket_name" {
   description = "Name of the S3 bucket (must be globally unique)"
   type        = string
+  default     = "pavel-tarlev-cv-20250218"
 }
 
 variable "price_class" {

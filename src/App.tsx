@@ -108,10 +108,10 @@ const AppContent: React.FC = () => {
         right: 0,
         bottom: 0,
         backgroundImage: `
-radial-gradient(circle at 20% 30%, ${theme.accent}10 0%, transparent 30%),
-radial-gradient(circle at 80% 70%, ${theme.accent}06 0%, transparent 35%),
-radial-gradient(circle at 40% 80%, ${theme.accent}04 0%, transparent 40%),
-radial-gradient(circle at 90% 20%, ${theme.accent}08 0%, transparent 30%)
+          radial-gradient(circle at 20% 30%, ${theme.accent}10 0%, transparent 30%),
+          radial-gradient(circle at 80% 70%, ${theme.accent}06 0%, transparent 35%),
+          radial-gradient(circle at 40% 80%, ${theme.accent}04 0%, transparent 40%),
+          radial-gradient(circle at 90% 20%, ${theme.accent}08 0%, transparent 30%)
         `,
         pointerEvents: 'none',
         zIndex: 0
@@ -134,10 +134,10 @@ radial-gradient(circle at 90% 20%, ${theme.accent}08 0%, transparent 30%)
       <div ref={cvRef} style={{
         maxWidth: '1200px',
         margin: '0 auto',
-        padding: '48px 20px',
+        padding: 'clamp(24px, 5vw, 48px) clamp(12px, 4vw, 20px)',
         display: 'grid',
-        gridTemplateColumns: '300px 1fr',
-        gap: '32px',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+        gap: 'clamp(20px, 3vw, 32px)',
         backgroundColor: 'transparent',
         transition: 'background-color 0.3s ease',
         position: 'relative',
@@ -175,18 +175,18 @@ radial-gradient(circle at 90% 20%, ${theme.accent}08 0%, transparent 30%)
       <footer style={{
         backgroundColor: theme.cardBg,
         borderTop: `1px solid ${theme.border}`,
-        padding: '24px 0',
-        marginTop: '48px',
+        padding: 'clamp(16px, 3vw, 24px) 0',
+        marginTop: 'clamp(32px, 6vw, 48px)',
         position: 'relative',
         zIndex: 2
       }}>
         <div style={{
           maxWidth: '1200px',
           margin: '0 auto',
-          padding: '0 20px',
+          padding: '0 clamp(12px, 4vw, 20px)',
           textAlign: 'center'
         }}>
-          <p style={{ color: theme.textMuted, fontSize: '14px' }}>
+          <p style={{ color: theme.textMuted, fontSize: 'clamp(12px, 2vw, 14px)' }}>
             © 2024 Pavel Tarlev. All rights reserved.
           </p>
         </div>

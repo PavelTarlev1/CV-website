@@ -1,0 +1,71 @@
+/* src/mobile.css */
+
+/* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  /* Stack sidebar and main content */
+  .cv-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reduce padding */
+  .cv-container {
+    padding: 20px 12px !important;
+  }
+
+  /* Make profile image smaller */
+  .profile-image {
+    width: 120px !important;
+    height: 120px !important;
+  }
+
+  /* Adjust font sizes */
+  h1 {
+    font-size: 32px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  /* Make contact icons wrap if needed */
+  .contact-icons {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Adjust popup positions for mobile */
+  .popup {
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* For very small screens (phones) */
+@media (max-width: 480px) {
+  .cv-container {
+    padding: 16px 10px !important;
+  }
+
+  h1 {
+    font-size: 28px !important;
+  }
+
+  .profile-image {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  /* Stack experience card headers */
+  .exp-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  /* Make tech tags full width on mobile */
+  .tech-tag {
+    width: 100%;
+    text-align: center;
+  }
+}

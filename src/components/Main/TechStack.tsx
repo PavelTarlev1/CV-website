@@ -35,22 +35,56 @@ export const TechStack: React.FC = () => {
     { icon: <SiTypescript />, label: 'TypeScript' }
   ];
 
+  // Responsive styling with inline media queries
+  const containerStyle = {
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    gap: 'clamp(8px, 2vw, 16px)',
+    backgroundColor: theme.cardBg,
+    padding: 'clamp(12px, 3vw, 20px)',
+    borderRadius: '12px',
+    border: `1px solid ${theme.border}`,
+    '@media (max-width: 480px)': {
+      gap: '8px',
+      padding: '12px'
+    }
+  };
+
+  const itemStyle = {
+    display: 'flex' as const,
+    alignItems: 'center' as const,
+    gap: 'clamp(4px, 1vw, 8px)',
+    color: theme.textSecondary,
+    fontSize: 'clamp(12px, 1.8vw, 14px)',
+    flex: '0 1 auto',
+    '@media (max-width: 480px)': {
+      fontSize: '12px',
+      gap: '4px'
+    }
+  };
+
+  const iconStyle = {
+    color: theme.accent,
+    fontSize: 'clamp(16px, 2.2vw, 20px)',
+    '@media (max-width: 480px)': {
+      fontSize: '16px'
+    }
+  };
+
   return (
-    <div id="skills" style={{ marginBottom: '32px' }}>
-      <h2 style={{ color: theme.accent, fontSize: '24px', margin: '0 0 16px 0' }}>Tech Stack</h2>
-      <div style={{ 
-        display: 'flex', 
-        flexWrap: 'wrap', 
-        gap: '16px',
-        backgroundColor: theme.cardBg,
-        padding: '20px',
-        borderRadius: '12px',
-        border: `1px solid ${theme.border}`
+    <div id="skills" style={{ marginBottom: 'clamp(24px, 4vw, 32px)' }}>
+      <h2 style={{ 
+        color: theme.accent, 
+        fontSize: 'clamp(20px, 3vw, 24px)', 
+        margin: '0 0 clamp(12px, 2vw, 16px) 0' 
       }}>
+        Tech Stack
+      </h2>
+      <div style={containerStyle}>
         {techItems.map((item, i) => (
-          <span key={i} style={{ display: 'flex', alignItems: 'center', gap: '8px', color: theme.textSecondary }}>
-            <span style={{ color: theme.accent, fontSize: '20px' }}>{item.icon}</span> 
-            <span style={{ fontSize: '14px' }}>{item.label}</span>
+          <span key={i} style={itemStyle}>
+            <span style={iconStyle}>{item.icon}</span> 
+            <span>{item.label}</span>
           </span>
         ))}
       </div>

@@ -1,7 +1,7 @@
 # terraform/terraform.tfvars.example
 aws_region  = "us-east-1"
 environment = "prod"
-bucket_name = "pavel-tarlev-cv"  # Must be globally unique!
+bucket_name = "pavel-tarlev-cv-20250218"  # Must be globally unique!
 
 # Optional custom domain (uncomment if you have one)
 # domain_name = "paveltarlev.com"

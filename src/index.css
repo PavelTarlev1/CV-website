@@ -9,6 +9,7 @@ html, body {
   padding: 0;
   width: 100%;
   background-color: #0f172a;
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
 
 body {
@@ -34,4 +35,111 @@ body {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
   }
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  /* Make contact icons more touch-friendly */
+  [class*="ContactInfo"] button,
+  [class*="ContactInfo"] a {
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Adjust popup positioning for mobile */
+  [class*="popupStyle"] {
+    left: auto !important;
+    right: 0 !important;
+    transform: none !important;
+    max-width: 90vw !important;
+  }
+
+  /* Make collapsible sections easier to tap */
+  [class*="CollapsibleSection"] > div {
+    padding: 16px 0 !important;
+    min-height: 56px;
+  }
+
+  /* Improve readability on small screens */
+  p, li {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+
+  h1 {
+    font-size: 32px !important;
+  }
+
+  h2 {
+    font-size: 22px !important;
+  }
+
+  h3 {
+    font-size: 18px !important;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 28px !important;
+  }
+
+  h2 {
+    font-size: 20px !important;
+  }
+
+  /* Make tech stack items stack more cleanly */
+  [id="skills"] > div {
+    gap: 6px !important;
+  }
+
+  [id="skills"] span {
+    font-size: 11px !important;
+  }
+
+  /* Adjust padding */
+  [ref={cvRef}] {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  [class*="Sidebar"] {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+}
+
+/* Ensure touch targets are large enough */
+button, 
+a, 
+[role="button"],
+.clickable {
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Prevent text overflow */
+* {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
 }

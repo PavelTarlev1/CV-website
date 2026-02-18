@@ -3,16 +3,20 @@
 
 set -e
 
+# Fixed bucket name
+BUCKET_NAME="pavel-tarlev-cv-20250218"
+echo "📦 Using bucket name: $BUCKET_NAME"
+
 echo "🚀 Building React app..."
 npm run build
 
 echo "🏗️  Deploying infrastructure with Terraform..."
 cd terraform
+
 terraform init
-terraform apply -auto-approve
+terraform apply -var="bucket_name=$BUCKET_NAME" -auto-approve
 
 # Get outputs
-BUCKET_NAME=$(terraform output -raw s3_bucket)
 CLOUDFRONT_ID=$(terraform output -raw cloudfront_id)
 WEBSITE_URL=$(terraform output -raw website_url)
 
@@ -26,3 +30,4 @@ aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_ID --paths "/*"
 
 echo "✅ Deployment complete!"
 echo "🌐 Your CV is live at: $WEBSITE_URL"
+echo "📦 Bucket: $BUCKET_NAME"
