@@ -37,7 +37,7 @@ export const experiences: IExperience[] = [
   {
     title: "Internship - Full Stack Developer",
     company: "WPX.net",
-    period: "2021",
+    period: "11/2021-06/2022",
     description: [
       "Contributed to the development and maintenance of a high-performance, managed WordPress hosting platform used by thousands of businesses",
       "Developed REST APIs and microservices with Node.js, NestJS, and Vue.js to support the platform's backend functionality",

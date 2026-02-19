@@ -131,17 +131,20 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
         fontWeight: '600', 
         marginBottom: '16px',
         textTransform: 'uppercase',
-        letterSpacing: '0.5px'
+        letterSpacing: '0.5px',
+        textAlign: 'center' // Center the heading
       }}>
         Contact Information
       </h3>
       
       <div style={{ 
         display: 'flex',
-        justifyContent: 'space-around',
+        justifyContent: 'center', // Changed from 'space-around' to 'center'
         alignItems: 'center',
+        gap: '20px', // Add gap between icons
         padding: '8px 0',
-        position: 'relative'
+        position: 'relative',
+        width: '100%'
       }}>
         {/* Phone */}
         <div ref={phoneRef} style={{ position: 'relative' }}>

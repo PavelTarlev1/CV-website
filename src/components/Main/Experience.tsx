@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme } from '../Layout/ThemeProvider';
 import { ExperienceCard } from './ExperienceCard';
 import type { IExperience } from '../../types';
-import { experiences } from '../../data/experiencees';
+import { experiences } from '../../data/experiences';
 
 interface ExperienceProps {
   openProjects: {
