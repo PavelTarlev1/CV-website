@@ -24,8 +24,6 @@ export interface ITheme {
 
 export interface IOpenSections {
   about: boolean;
-  languages: boolean;
-  hobbies: boolean;
 }
 
 export interface IOpenProjects {

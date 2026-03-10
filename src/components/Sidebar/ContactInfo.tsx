@@ -169,6 +169,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
           
           {showPhone && (
             <div 
+              className="card"
               style={popupStyle}
               onClick={(e) => e.stopPropagation()}
             >
@@ -217,6 +218,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
           
           {showEmail && (
             <div 
+              className="card"
               style={popupStyle}
               onClick={(e) => e.stopPropagation()}
             >
@@ -265,6 +267,7 @@ export const ContactInfo: React.FC<ContactInfoProps> = ({
           
           {showLinkedin && (
             <div 
+              className="card"
               style={popupStyle}
               onClick={(e) => e.stopPropagation()}
             >

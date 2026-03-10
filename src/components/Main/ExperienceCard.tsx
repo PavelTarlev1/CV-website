@@ -16,7 +16,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   const { theme } = useTheme();
 
   return (
-    <div style={{
+    <div className="card" style={{
       backgroundColor: theme.cardBg,
       padding: '24px',
       borderRadius: '12px',

@@ -11,9 +11,6 @@
     "deploy": "npm run build && aws s3 sync ./dist/ s3://pavel-tarlev-cv/ --delete"
   },
   "dependencies": {
-    "html2canvas": "^1.4.1",
-    "jspdf": "^4.1.0",
-    "jspdf-autotable": "^5.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0"
@@ -32,5 +29,17 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "eslint.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PavelTarlev1/My-AWS-hosted-CV-website.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PavelTarlev1/My-AWS-hosted-CV-website/issues"
+  },
+  "homepage": "https://github.com/PavelTarlev1/My-AWS-hosted-CV-website#readme"
 }

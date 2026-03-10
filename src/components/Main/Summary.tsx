@@ -8,7 +8,7 @@ export const Summary: React.FC = () => {
   return (
     <div style={{ marginBottom: '48px' }}>
       <h2 style={{ color: theme.accent, fontSize: '24px', margin: '0 0 16px 0' }}>Summary</h2>
-      <div style={{
+      <div className="card" style={{
         backgroundColor: theme.cardBg,
         padding: '24px',
         borderRadius: '12px',

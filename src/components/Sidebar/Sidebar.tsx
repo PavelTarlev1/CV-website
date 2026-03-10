@@ -1,17 +1,14 @@
 import React from 'react';
 import { Profile } from './Profile';
 import { ContactInfo } from './ContactInfo';
-import { DownloadButton } from './DownloadButton';
-import { CollapsibleSection } from './CollapsibleSection';
+import { StaticSection } from './StaticSection';
 import { useTheme } from '../Layout/ThemeProvider';
 import { FaMusic, FaMotorcycle, FaPlane, FaHiking } from 'react-icons/fa';
-import { languages, hobbies } from '../../config/personalInfo';
+import { languages, hobbies, about } from '../../config/personalInfo';
 
 interface SidebarProps {
   openSections: {
     about: boolean;
-    languages: boolean;
-    hobbies: boolean; 
   };
   showPhone: boolean;
   showEmail: boolean;
@@ -19,7 +16,7 @@ interface SidebarProps {
   copiedPhone: boolean;
   copiedEmail: boolean;
   copiedLinkedin: boolean;
-  onToggleSection: (section: 'about' | 'languages' | 'hobbies') => void;
+  onToggleSection: (section: 'about') => void;
   onPhoneClick: () => void;
   onEmailClick: () => void;
   onLinkedinClick: () => void;
@@ -27,15 +24,13 @@ interface SidebarProps {
   onCopyEmail: () => void;
   onCopyLinkedin: () => void;
   onClosePopups: () => void;
-  onExportPDF: () => void;
-  isExporting: boolean;
   phoneRef: React.RefObject<HTMLDivElement>;
   emailRef: React.RefObject<HTMLDivElement>;
   linkedinRef: React.RefObject<HTMLDivElement>;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  openSections, 
+  openSections,
   showPhone, 
   showEmail, 
   showLinkedin,
@@ -50,12 +45,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
   onCopyEmail,
   onCopyLinkedin,
   onClosePopups,
-  onExportPDF, 
-  isExporting, 
   phoneRef, 
   emailRef,
   linkedinRef
-}) => {
+}: SidebarProps) => {
   const { theme } = useTheme();
 
   // Map icon components to hobby data
@@ -67,7 +60,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
-    <div style={{
+    <div className="card" style={{
       backgroundColor: theme.cardBg,
       borderRadius: '16px',
       padding: '24px',
@@ -96,8 +89,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
         linkedinRef={linkedinRef}
       />
 
-      <DownloadButton onExport={onExportPDF} isExporting={isExporting} />
-
       {/* About Me section commented out */}
       {/* <CollapsibleSection
         title="About Me"
@@ -109,12 +100,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         </div>
       </CollapsibleSection> */}
 
-      <CollapsibleSection
-        title="Languages"
-        isOpen={openSections.languages}
-        onToggle={() => onToggleSection('languages')}
-      >
-        <div style={{ padding: '16px 0' }}>
+      {/* Languages section - now static (non-collapsible) */}
+      <StaticSection title="Languages">
+        <div>
           {languages.map((lang, index) => (
             <div key={index} style={{ 
               display: 'flex', 
@@ -129,14 +117,11 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </div>
           ))}
         </div>
-      </CollapsibleSection>
+      </StaticSection>
 
-      <CollapsibleSection
-        title="Hobbies & Interests"
-        isOpen={openSections.hobbies}
-        onToggle={() => onToggleSection('hobbies')}
-      >
-        <div style={{ padding: '16px 0', display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
+      {/* Hobbies & Interests section - now static (non-collapsible) */}
+      <StaticSection title="Hobbies & Interests">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px' }}>
           {hobbies.map((item, i) => (
             <span key={i} style={{
               display: 'flex',
@@ -152,7 +137,14 @@ export const Sidebar: React.FC<SidebarProps> = ({
             </span>
           ))}
         </div>
-      </CollapsibleSection>
+      </StaticSection>
+
+      {/* Bio section - now static (non-collapsible) */}
+      <StaticSection title="Bio">
+        <div style={{ color: theme.textSecondary, fontSize: '14px', lineHeight: '1.6' }}>
+          {about}
+        </div>
+      </StaticSection>
     </div>
   );
 };

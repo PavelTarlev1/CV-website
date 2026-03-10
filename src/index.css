@@ -99,7 +99,7 @@ body {
   }
 
   /* Adjust padding */
-  [ref={cvRef}] {
+  .cv-container {
     padding-left: 8px !important;
     padding-right: 8px !important;
   }

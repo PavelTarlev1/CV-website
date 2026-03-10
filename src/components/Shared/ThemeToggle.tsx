@@ -7,6 +7,7 @@ export const ThemeToggle: React.FC = () => {
 
   return (
     <button
+      className="card"
       onClick={toggleTheme}
       style={{
         display: 'flex',

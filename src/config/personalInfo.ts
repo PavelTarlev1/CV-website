@@ -16,16 +16,16 @@ export const personalInfo = {
     github: "https://github.com/paveltarlev"
   },
   
-  about: "Passionate Senior Software Developer with over 3 ytures and microservices. I thrive on solving complex problems and building scalable solutions that make a difference.",
+  about: "My journey began with civil engineering studies at PGSAG in Stara Zagora and continued at UASG Sofia. During this time, I developed freelance projects including a reservoir calculation program for Denev OOD. I then transitioned into a Technical Manager role on large-scale projects, which laid the foundation for my technical leadership skills. This diverse background in engineering, project management, and software development has shaped my problem-solving approach and ability to deliver complex, scalable solutions.",
   
   summary: "Proven Senior Software Developer with over 3 years of hands-on experience. Adept at designing and implementing innovative solutions, with a focus on scalability, efficiency, and cloud-native architectures.",
   
-languages: [
-  { name: "English", proficiency: 5 },
-  { name: "Russian", proficiency: 3 },
-  { name: "Bulgarian", proficiency: 5 },
- 
-],
+  languages: [
+    { name: "English", proficiency: 5 },
+    { name: "Russian", proficiency: 3 },
+    { name: "Bulgarian", proficiency: 5 },
+   
+  ],
   
   hobbies: [
     { icon: "🎵", label: "Music", component: "FaMusic" },

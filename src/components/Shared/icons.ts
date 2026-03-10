@@ -4,8 +4,7 @@ import {
 } from 'react-icons/fa';
 import { 
   SiNestjs, SiKubernetes, SiTerraform, SiJest, SiMongodb,
-  SiRabbitmq, SiKong, SiTypescript, SiApache, SiAmazondynamodb,
-  SiAmazonapigateway, SiAmazoncognito, SiPostgresql
+  SiRabbitmq, SiKong, SiTypescript, SiApache, SiPostgresql
 } from 'react-icons/si';
 
 export const getTechIcon = (techName: string, color: string): React.ReactNode => {
@@ -15,9 +14,9 @@ export const getTechIcon = (techName: string, color: string): React.ReactNode =>
     case 'AWS':
       return React.createElement(FaAws, { style: iconStyle });
     case 'Cognito':
-      return React.createElement(SiAmazoncognito, { style: iconStyle });
+      return React.createElement(FaAws, { style: iconStyle });
     case 'API Gateway':
-      return React.createElement(SiAmazonapigateway, { style: iconStyle });
+      return React.createElement(FaAws, { style: iconStyle });
     case 'PostgreSQL':
       return React.createElement(SiPostgresql, { style: iconStyle });
     case 'Kubernetes':
@@ -41,7 +40,7 @@ export const getTechIcon = (techName: string, color: string): React.ReactNode =>
     case 'Vue.js':
       return React.createElement(FaVuejs, { style: iconStyle });
     case 'DynamoDB':
-      return React.createElement(SiAmazondynamodb, { style: iconStyle });
+      return React.createElement(FaAws, { style: iconStyle });
     case 'RabbitMQ':
       return React.createElement(SiRabbitmq, { style: iconStyle });
     case 'Kong':

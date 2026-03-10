@@ -5,8 +5,7 @@ import {
 } from 'react-icons/fa';
 import { 
   SiKubernetes, SiNestjs, SiTerraform, SiJest, SiMongodb,
-  SiRabbitmq, SiKong, SiTypescript, SiApache, SiAmazondynamodb,
-  SiAmazonapigateway, SiAmazoncognito, SiPostgresql
+  SiRabbitmq, SiKong, SiTypescript, SiApache, SiPostgresql
 } from 'react-icons/si';
 
 export const TechStack: React.FC = () => {
@@ -14,8 +13,8 @@ export const TechStack: React.FC = () => {
 
   const techItems = [
     { icon: <FaAws />, label: 'AWS' },
-    { icon: <SiAmazoncognito />, label: 'Cognito' },
-    { icon: <SiAmazonapigateway />, label: 'API Gateway' },
+    { icon: <FaAws />, label: 'Cognito' },
+    { icon: <FaAws />, label: 'API Gateway' },
     { icon: <SiPostgresql />, label: 'PostgreSQL' },
     { icon: <SiKubernetes />, label: 'K8s' },
     { icon: <FaDocker />, label: 'Docker' },
@@ -26,7 +25,7 @@ export const TechStack: React.FC = () => {
     { icon: <SiJest />, label: 'Jest' },
     { icon: <FaJava />, label: 'Java' },
     { icon: <SiMongodb />, label: 'MongoDB' },
-    { icon: <SiAmazondynamodb />, label: 'DynamoDB' },
+    { icon: <FaAws />, label: 'DynamoDB' },
     { icon: <SiRabbitmq />, label: 'RabbitMQ' },
     { icon: <SiKong />, label: 'Kong' },
     { icon: <FaNodeJs />, label: 'Node.js' },
@@ -80,7 +79,7 @@ export const TechStack: React.FC = () => {
       }}>
         Tech Stack
       </h2>
-      <div style={containerStyle}>
+      <div className="card" style={containerStyle}>
         {techItems.map((item, i) => (
           <span key={i} style={itemStyle}>
             <span style={iconStyle}>{item.icon}</span> 

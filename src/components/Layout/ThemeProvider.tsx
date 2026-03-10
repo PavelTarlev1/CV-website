@@ -34,7 +34,7 @@ interface ThemeContextType {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }: { children: React.ReactNode }) => {
   const [darkMode, setDarkMode] = useState(true);
 
   const toggleTheme = () => {
@@ -42,6 +42,12 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   };
 
   const theme = darkMode ? themes.dark : themes.light;
+
+  // Apply theme to document body
+  React.useEffect(() => {
+    document.body.style.backgroundColor = theme.bg;
+    document.documentElement.style.backgroundColor = theme.bg;
+  }, [theme.bg]);
 
   return (
     <ThemeContext.Provider value={{ darkMode, theme, toggleTheme }}>

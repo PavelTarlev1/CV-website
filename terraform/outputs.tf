@@ -18,3 +18,4 @@ output "website_url" {
   description = "Website URL"
   value       = var.domain_name != "" ? "https://${var.domain_name}" : "https://${aws_cloudfront_distribution.cv_distribution.domain_name}"
 }
+
