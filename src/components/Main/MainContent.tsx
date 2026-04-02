@@ -3,7 +3,6 @@ import { Hero } from './Hero';
 import { Summary } from './Summary';
 import { TechStack } from './TechStack';
 import { Experience } from './Experience';
-
 interface MainContentProps {
   openProjects: {
     altice: boolean;

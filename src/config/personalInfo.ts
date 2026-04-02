@@ -22,7 +22,7 @@ export const personalInfo = {
   
   languages: [
     { name: "English", proficiency: 5 },
-    { name: "Russian", proficiency: 3 },
+    { name: "Russian", proficiency: 4 },
     { name: "Bulgarian", proficiency: 5 },
    
   ],

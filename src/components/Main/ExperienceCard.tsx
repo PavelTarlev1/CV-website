@@ -79,18 +79,19 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
       {exp.projectInfo && isProjectOpen && (
         <div style={{
           backgroundColor: theme.bg,
-          padding: '16px',
+          padding: '12px 16px',
           borderRadius: '8px',
           marginBottom: '16px',
-          border: `1px solid ${theme.border}`
+          border: `1px solid ${theme.border}`,
+          borderLeft: `3px solid ${theme.accent}`
         }}>
-          <p style={{ color: theme.textSecondary, fontSize: '13px', margin: '0 0 12px 0', lineHeight: '1.6' }}>
+          <p style={{ color: theme.textSecondary, fontSize: '13px', margin: '0 0 8px 0', lineHeight: '1.6' }}>
             {exp.projectInfo}
           </p>
           {exp.projectLink && (
-            <a 
+            <a
               href={exp.projectLink}
-              target="_blank" 
+              target="_blank"
               rel="noopener noreferrer"
               style={{
                 display: 'inline-flex',

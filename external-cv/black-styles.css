@@ -1,0 +1,494 @@
+ n/* Black Theme A4 CV - Optimized for Print */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: #e0e0e0; /* Light text */
+    line-height: 1.5;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* A4 Container */
+.a4-container {
+    width: 210mm; /* A4 width */
+    min-height: 297mm; /* A4 height */
+    background-color: #2d2d2d; /* Dark card background */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 25mm; /* A4 margins */
+    position: relative;
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #00bcd4; /* Cyan accent */
+}
+
+.name {
+    color: #00bcd4; /* Cyan */
+    font-size: 36px;
+    font-weight: bold;
+    margin: 0 0 8px 0;
+}
+
+.title {
+    color: #b0b0b0; /* Light gray */
+    font-size: 18px;
+    margin: 0;
+}
+
+/* Main Layout */
+.main-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+/* Section Titles */
+.section-title {
+    color: #00bcd4; /* Cyan */
+    font-size: 20px;
+    margin: 0 0 15px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #404040;
+}
+
+/* Cards */
+.card {
+    background-color: #363636;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #404040;
+    margin-bottom: 20px;
+}
+
+/* Tech Stack */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.tech-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #b0b0b0;
+    font-size: 13px;
+    background-color: #404040;
+    padding: 6px 12px;
+    border-radius: 15px;
+}
+
+.tech-item i {
+    color: #00bcd4; /* Cyan */
+    font-size: 16px;
+}
+
+/* Projects */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #363636;
+    padding: 18px;
+    border-radius: 8px;
+    border: 1px solid #404040;
+    border-left: 4px solid #00bcd4; /* Cyan accent */
+}
+
+.project-card h3 {
+    color: #e0e0e0;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.project-card p {
+    color: #b0b0b0;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.tech-tag {
+    background-color: #004d40; /* Dark cyan */
+    color: #80deea; /* Light cyan */
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 500;
+}
+
+/* Experience */
+.experience-card {
+    background-color: #363636;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #404040;
+    margin-bottom: 20px;
+    border-left: 4px solid #00bcd4; /* Cyan accent */
+}
+
+.experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.experience-header h3 {
+    color: #e0e0e0;
+    font-size: 16px;
+    margin: 0;
+}
+
+.experience-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.company {
+    color: #00bcd4; /* Cyan */
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.period {
+    color: #888;
+    font-size: 13px;
+}
+
+.project-name {
+    color: #b0b0b0;
+    font-weight: 500;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.experience-list {
+    list-style: none;
+    margin-bottom: 15px;
+}
+
+.experience-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.experience-list li:before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #00bcd4; /* Cyan */
+    font-size: 12px;
+}
+
+/* Sidebar */
+.sidebar-card {
+    background-color: #363636;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #404040;
+}
+
+/* Profile */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #404040;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid #00bcd4; /* Cyan */
+    overflow: hidden;
+}
+
+.profile-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-info h3 {
+    color: #e0e0e0;
+    font-size: 18px;
+    margin-bottom: 4px;
+}
+
+.profile-info p {
+    color: #b0b0b0;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Contact */
+.contact-section {
+    margin-bottom: 25px;
+}
+
+.sidebar-title {
+    color: #00bcd4; /* Cyan */
+    font-size: 16px;
+    margin-bottom: 15px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #404040;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+    font-size: 13px;
+}
+
+.contact-item i {
+    color: #00bcd4; /* Cyan */
+    width: 16px;
+    font-size: 14px;
+}
+
+/* Languages */
+.sidebar-section {
+    margin-bottom: 25px;
+}
+
+.language-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #b0b0b0;
+    font-size: 13px;
+}
+
+.stars {
+    color: #00bcd4; /* Cyan */
+}
+
+/* Hobbies */
+.hobbies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.hobby-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #404040;
+    padding: 8px 10px;
+    border-radius: 15px;
+    font-size: 13px;
+}
+
+.hobby-item i {
+    color: #00bcd4; /* Cyan */
+}
+
+.hobby-item span {
+    color: #b0b0b0;
+}
+
+/* Bio */
+.bio-text {
+    color: #b0b0b0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* Page break line (print only) */
+.page-break-line {
+    display: none;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding-top: 25px;
+    margin-top: 30px;
+    border-top: 1px solid #404040;
+    color: #888;
+    font-size: 12px;
+}
+
+/* Print Styles */
+@page {
+    size: A4;
+    margin-top: 10mm;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #1a1a1a;
+}
+
+@page :first {
+    margin-top: 0;
+}
+
+@media print {
+    html, body {
+        background-color: #1a1a1a !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+        min-height: unset !important;
+        color: #e0e0e0 !important;
+    }
+
+    .a4-container {
+        width: 100% !important;
+        min-height: unset !important;
+        box-shadow: none !important;
+        padding: 12mm !important;
+        margin: 0 !important;
+        background-color: #2d2d2d !important;
+    }
+
+    .main-layout {
+        gap: 20px !important;
+    }
+
+    .section {
+        margin-bottom: 14px !important;
+    }
+
+    .card, .experience-card, .sidebar-card {
+        background-color: #363636 !important;
+        border-color: #404040 !important;
+        padding: 14px !important;
+        margin-bottom: 12px !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .tech-item, .hobby-item {
+        background-color: #404040 !important;
+    }
+
+    .tech-item i, .hobby-item i, .contact-item i,
+    .experience-list li:before {
+        color: #00bcd4 !important;
+    }
+
+    .tech-item span, .hobby-item span {
+        color: #b0b0b0 !important;
+    }
+
+    .name, .section-title, .company, .sidebar-title, .stars,
+    .profile-info h3 {
+        color: #00bcd4 !important;
+    }
+
+    .experience-header h3, .project-card h3 {
+        color: #e0e0e0 !important;
+    }
+
+    .title, .project-name, .period, .bio-text,
+    .experience-list li, .contact-item, .language-item {
+        color: #b0b0b0 !important;
+    }
+
+    .tech-tag {
+        background-color: #004d40 !important;
+        color: #80deea !important;
+    }
+
+    .section-title, .sidebar-title {
+        border-bottom-color: #404040 !important;
+    }
+
+    .experience-card {
+        border-left-color: #00bcd4 !important;
+    }
+
+    .footer {
+        border-top-color: #404040 !important;
+        color: #888 !important;
+        padding-top: 10px !important;
+        margin-top: 14px !important;
+    }
+
+    .page-break-line {
+        display: block !important;
+        break-before: page !important;
+        page-break-before: always !important;
+        border-top: 1px solid #00bcd4 !important;
+        margin-bottom: 12px !important;
+        width: 100% !important;
+    }
+
+    .no-print {
+        display: none !important;
+    }
+}
+
+/* Responsive for screen */
+@media screen and (max-width: 1200px) {
+    .a4-container {
+        width: 100%;
+        min-height: auto;
+        padding: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+    
+    .a4-container {
+        padding: 20px;
+    }
+    
+    .experience-header {
+        flex-direction: column;
+    }
+    
+    .experience-meta {
+        align-items: flex-start;
+        margin-top: 5px;
+    }
+}

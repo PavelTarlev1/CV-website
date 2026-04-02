@@ -1,6 +1,7 @@
 import React from 'react';
 import { Profile } from './Profile';
 import { ContactInfo } from './ContactInfo';
+import { DownloadButton } from './DownloadButton';
 import { StaticSection } from './StaticSection';
 import { useTheme } from '../Layout/ThemeProvider';
 import { FaMusic, FaMotorcycle, FaPlane, FaHiking } from 'react-icons/fa';
@@ -30,14 +31,12 @@ interface SidebarProps {
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  openSections,
   showPhone, 
   showEmail, 
   showLinkedin,
   copiedPhone, 
   copiedEmail,
   copiedLinkedin,
-  onToggleSection, 
   onPhoneClick, 
   onEmailClick,
   onLinkedinClick,
@@ -88,6 +87,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
         emailRef={emailRef}
         linkedinRef={linkedinRef}
       />
+
+      {/* PDF Download Button */}
+      <DownloadButton />
 
       {/* About Me section commented out */}
       {/* <CollapsibleSection

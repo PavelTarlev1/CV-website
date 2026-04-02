@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { ITheme } from '../../types';
 
 const themes = {
@@ -30,27 +30,52 @@ interface ThemeContextType {
   darkMode: boolean;
   theme: ITheme;
   toggleTheme: () => void;
+  forceTheme: (dark: boolean) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }: { children: React.ReactNode }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  // Check URL parameters first, then localStorage, then default to dark
+  const getInitialTheme = (): boolean => {
+    // Check URL parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const themeParam = urlParams.get('theme');
+    if (themeParam === 'light') return false;
+    if (themeParam === 'dark') return true;
+    
+    // Check localStorage
+    const savedTheme = localStorage.getItem('cv-theme');
+    if (savedTheme === 'light') return false;
+    if (savedTheme === 'dark') return true;
+    
+    // Default to dark
+    return true;
+  };
+  
+  const [darkMode, setDarkMode] = useState(getInitialTheme());
 
   const toggleTheme = () => {
-    setDarkMode(!darkMode);
+    const newDarkMode = !darkMode;
+    setDarkMode(newDarkMode);
+    localStorage.setItem('cv-theme', newDarkMode ? 'dark' : 'light');
+  };
+  
+  const forceTheme = (dark: boolean) => {
+    setDarkMode(dark);
+    // Don't save to localStorage when forced (e.g., for PDF generation)
   };
 
   const theme = darkMode ? themes.dark : themes.light;
 
   // Apply theme to document body
-  React.useEffect(() => {
+  useEffect(() => {
     document.body.style.backgroundColor = theme.bg;
     document.documentElement.style.backgroundColor = theme.bg;
   }, [theme.bg]);
 
   return (
-    <ThemeContext.Provider value={{ darkMode, theme, toggleTheme }}>
+    <ThemeContext.Provider value={{ darkMode, theme, toggleTheme, forceTheme }}>
       {children}
     </ThemeContext.Provider>
   );

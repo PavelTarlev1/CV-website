@@ -82,16 +82,20 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div style={{
-      backgroundColor: theme.bg,
-      minHeight: '100vh',
-      width: '100%',
-      color: theme.text,
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      transition: 'background-color 0.3s ease, color 0.3s ease',
-      position: 'relative',
-      overflow: 'hidden'
-    }}>
+    <div 
+      id="cv-container"
+      className="cv-main-container"
+      style={{
+        backgroundColor: theme.bg,
+        minHeight: '100vh',
+        width: '100%',
+        color: theme.text,
+        fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+        transition: 'background-color 0.3s ease, color 0.3s ease',
+        position: 'relative',
+        overflow: 'hidden'
+      }}
+    >
       {/* Geometric pattern background */}
       <>
         <div style={{

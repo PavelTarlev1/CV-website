@@ -10,6 +10,15 @@ export interface IExperience {
   projectLink?: string;
 }
 
+export interface IProject {
+  title: string;
+  description: string;
+  tech: string[];
+  githubLink?: string;
+  liveDemoLink?: string;
+  imageUrl?: string;
+}
+
 export interface ITheme {
   bg: string;
   cardBg: string;
