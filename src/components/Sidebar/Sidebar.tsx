@@ -59,6 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
   ];
 
   return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
     <div className="card" style={{
       backgroundColor: theme.cardBg,
       borderRadius: '16px',
@@ -147,6 +148,45 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {about}
         </div>
       </StaticSection>
+
+    </div>
+
+    {/* Personal Projects - separate card */}
+    <div className="card" style={{
+      backgroundColor: theme.cardBg,
+      borderRadius: '16px',
+      padding: '24px',
+      border: `1px solid ${theme.border}`,
+      marginTop: '24px',
+      transition: 'background-color 0.3s ease, border-color 0.3s ease'
+    }}>
+      <StaticSection title="Personal Projects">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div>
+            <div style={{ color: theme.text, fontWeight: '600', fontSize: '14px', marginBottom: '4px' }}>Denev Calibration Suite</div>
+            <div style={{ color: theme.textSecondary, fontSize: '13px', lineHeight: '1.5', marginBottom: '6px' }}>
+              Desktop app for tank volume calibration supporting multiple tank shapes (horizontal, vertical, inclined, rectangular, wine). Features volume calculations, calibration history, and PDF report export.
+            </div>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {['Python', 'PyQt5', 'PyInstaller', 'Private'].map(tag => (
+                <span key={tag} style={{ fontSize: '11px', backgroundColor: theme.bg, border: `1px solid ${theme.border}`, borderRadius: '12px', padding: '2px 8px', color: theme.textSecondary }}>{tag}</span>
+              ))}
+            </div>
+          </div>
+          <div>
+            <div style={{ color: theme.text, fontWeight: '600', fontSize: '14px', marginBottom: '4px' }}>AWS-Hosted CV Website</div>
+            <div style={{ color: theme.textSecondary, fontSize: '13px', lineHeight: '1.5', marginBottom: '6px' }}>
+              Personal CV website hosted on AWS S3 + CloudFront, built with React, TypeScript, and Terraform.
+            </div>
+            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+              {['React', 'TypeScript', 'AWS', 'Private'].map(tag => (
+                <span key={tag} style={{ fontSize: '11px', backgroundColor: theme.bg, border: `1px solid ${theme.border}`, borderRadius: '12px', padding: '2px 8px', color: theme.textSecondary }}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </StaticSection>
+    </div>
     </div>
   );
 };

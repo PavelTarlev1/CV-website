@@ -6,311 +6,111 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     html, body {
       width: 100%;
-      background: #1a1a1a;
       font-family: 'Segoe UI', Roboto, Ubuntu, sans-serif;
-      color: #e0e0e0;
       font-size: 13px;
       line-height: 1.5;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
-
     @page { margin: 0; }
-
-    .page {
-      width: 100%;
-      background: #242424;
-      padding: 9mm 14mm;
-    }
-
-    /* ── HEADER ── */
-    .header {
-      border-bottom: 2px solid #00bcd4;
-      padding-bottom: 7px;
-      margin-bottom: 10px;
-    }
-
-    .header h1 {
-      color: #00bcd4;
-      font-size: 27px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
-
-    .header p {
-      color: #aaa;
-      font-size: 13px;
-      margin-top: 2px;
-    }
-
-    /* ── TWO-COLUMN LAYOUT ── */
-    .layout {
-      display: grid;
-      grid-template-columns: 1fr 190px;
-      gap: 16px;
-    }
-
-    /* ── SECTION ── */
+    .page { width: 100%; padding: 9mm 14mm; }
+    .header { padding-bottom: 7px; margin-bottom: 10px; }
+    .header h1 { font-size: 27px; font-weight: 700; letter-spacing: 0.5px; }
+    .header p { font-size: 13px; margin-top: 2px; }
+    .layout { display: grid; grid-template-columns: 1fr 190px; gap: 16px; }
     .section { margin-bottom: 10px; }
-
-    .section-title {
-      color: #00bcd4;
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      border-bottom: 1px solid #3a3a3a;
-      padding-bottom: 4px;
-      margin-bottom: 8px;
-    }
-
-    /* ── SUMMARY ── */
-    .summary-text {
-      color: #bbb;
-      font-size: 12px;
-      line-height: 1.55;
-      background: #2e2e2e;
-      padding: 8px 12px;
-      border-radius: 5px;
-      border-left: 3px solid #00bcd4;
-    }
-
-    /* ── TECH STACK ── */
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      background: #2e2e2e;
-      padding: 8px 12px;
-      border-radius: 5px;
-    }
-
-    .tech-item {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      background: #2e3a3a;
-      padding: 3px 9px;
-      border-radius: 12px;
-      font-size: 11.5px;
-      color: #b0e0e0;
-      border: 1px solid #1a3a3a;
-    }
-
-    .tech-item i { color: #00bcd4; font-size: 12px; }
-
-    /* ── EXPERIENCE CARD ── */
-    .exp-card {
-      background: #2e2e2e;
-      border-left: 3px solid #00bcd4;
-      border-radius: 5px;
-      padding: 9px 13px;
-      margin-bottom: 8px;
-      break-inside: avoid;
-      page-break-inside: avoid;
-      border: 1px solid #3a3a3a;
-      border-left: 3px solid #00bcd4;
-    }
-
-    .exp-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 4px;
-    }
-
-    .exp-header h3 { color: #e8e8e8; font-size: 13.5px; font-weight: 600; }
-
+    .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; padding-bottom: 4px; margin-bottom: 8px; }
+    .summary-text { font-size: 12px; line-height: 1.55; padding: 8px 12px; border-radius: 5px; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 6px; padding: 8px 12px; border-radius: 5px; }
+    .tech-item { display: flex; align-items: center; gap: 6px; padding: 3px 9px; border-radius: 12px; font-size: 11.5px; }
+    .tech-item i { font-size: 12px; }
+    .exp-card { border-radius: 5px; padding: 9px 13px; margin-bottom: 8px; break-inside: avoid; page-break-inside: avoid; }
+    .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px; }
+    .exp-header h3 { font-size: 13.5px; font-weight: 600; }
     .exp-meta { text-align: right; flex-shrink: 0; margin-left: 10px; }
-    .exp-company { color: #00bcd4; font-weight: 600; font-size: 12px; display: block; }
-    .exp-period  { color: #777; font-size: 11px; }
-
-    .exp-project { color: #999; font-size: 11.5px; margin-bottom: 6px; font-style: italic; }
-
-    .proj-overview {
-      color: #999;
-      font-size: 11px;
-      line-height: 1.5;
-      background: #272727;
-      border-left: 2px solid #006064;
-      padding: 6px 9px;
-      border-radius: 3px;
-      margin-bottom: 8px;
-    }
-
+    .exp-company { font-weight: 600; font-size: 12px; display: block; }
+    .exp-period { font-size: 11px; }
+    .exp-project { font-size: 11.5px; margin-bottom: 6px; font-style: italic; }
+    .proj-overview { font-size: 11px; line-height: 1.5; padding: 6px 9px; border-radius: 3px; margin-bottom: 8px; }
     .exp-list { list-style: none; margin-bottom: 8px; }
-
-    .exp-list li {
-      position: relative;
-      padding-left: 15px;
-      margin-bottom: 3px;
-      color: #b8b8b8;
-      font-size: 11.5px;
-      line-height: 1.45;
-    }
-
-    .exp-list li::before {
-      content: '▶';
-      position: absolute;
-      left: 0;
-      color: #00bcd4;
-      font-size: 8px;
-      top: 3px;
-    }
-
+    .exp-list li { position: relative; padding-left: 15px; margin-bottom: 3px; font-size: 11.5px; line-height: 1.45; }
+    .exp-list li::before { content: '▶'; position: absolute; left: 0; font-size: 8px; top: 3px; }
     .tech-tags { display: flex; flex-wrap: wrap; gap: 5px; }
-
-    .tech-tag {
-      background: #2e3a3a;
-      color: #80deea;
-      padding: 2px 8px;
-      border-radius: 10px;
-      font-size: 10.5px;
-      font-weight: 500;
-      border: 1px solid #1a3a3a;
-    }
-
-    /* ── SIDEBAR ── */
+    .tech-tag { padding: 2px 8px; border-radius: 10px; font-size: 10.5px; font-weight: 500; }
     .sidebar { display: flex; flex-direction: column; }
-
-    .sidebar-card {
-      background: #2a2a2a;
-      border-radius: 6px;
-      padding: 14px;
-      border: 1px solid #3a3a3a;
-    }
-
+    .sidebar-card { border-radius: 6px; padding: 14px; }
     .profile { text-align: center; margin-bottom: 14px; }
-
-    .profile-img {
-      width: 90px;
-      height: 90px;
-      border-radius: 50%;
-      border: 2px solid #00bcd4;
-      overflow: hidden;
-      margin: 0 auto 8px;
-    }
-
+    .profile-img { width: 90px; height: 90px; border-radius: 50%; overflow: hidden; margin: 0 auto 8px; }
     .profile-img img { width: 100%; height: 100%; object-fit: cover; }
-
-    .profile h3 { color: #00bcd4; font-size: 14px; font-weight: 700; }
-    .profile p  { color: #999; font-size: 11px; margin-top: 3px; }
-
+    .profile h3 { font-size: 14px; font-weight: 700; }
+    .profile p { font-size: 11px; margin-top: 3px; }
     .sb-section { margin-bottom: 13px; }
     .sb-section:last-child { margin-bottom: 0; }
-
-    .sb-title {
-      color: #e0e0e0;
-      font-size: 11.5px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 2px solid #00bcd4;
-      padding-bottom: 4px;
-      margin-bottom: 8px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      margin-bottom: 6px;
-      color: #aaa;
-      font-size: 11px;
-      word-break: break-all;
-    }
-
-    .contact-item i { color: #00bcd4; width: 13px; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
-
-    .contact-item a { color: #aaa; text-decoration: none; }
-    .contact-item a:hover { color: #00bcd4; }
-
-    .lang-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-      color: #aaa;
-      font-size: 11.5px;
-    }
-
-    .lang-stars { color: #00bcd4; font-size: 11px; }
-
+    .sb-title { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding-bottom: 4px; margin-bottom: 8px; }
+    .contact-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; font-size: 11px; word-break: break-all; }
+    .contact-item i { width: 13px; font-size: 12px; flex-shrink: 0; margin-top: 1px; }
+    .contact-item a { text-decoration: none; }
+    .lang-item { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 11.5px; }
+    .lang-stars { font-size: 11px; }
     .hobbies { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
-
-    .hobby {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      background: #333;
-      padding: 5px 8px;
-      border-radius: 10px;
-      font-size: 11px;
-      color: #bbb;
-      border: 1px solid #3a3a3a;
-    }
-
-    .hobby i { color: #00bcd4; font-size: 11px; }
-
-    .bio-text { color: #aaa; font-size: 11px; line-height: 1.55; }
-
-    .footer {
-      margin-top: 14px;
-      padding-top: 8px;
-      border-top: 1px solid #333;
-      text-align: center;
-      color: #555;
-      font-size: 11px;
-    }
+    .hobby { display: flex; align-items: center; gap: 5px; padding: 5px 8px; border-radius: 10px; font-size: 11px; }
+    .hobby i { font-size: 11px; }
+    .bio-text { font-size: 11px; line-height: 1.55; }
+    .footer { margin-top: 14px; padding-top: 8px; text-align: center; font-size: 11px; }
+    
+    html, body { background: #1a1a1a; color: #e0e0e0; }
+    .page { background: #242424; }
+    .header { border-bottom: 2px solid #00bcd4; }
+    .header h1 { color: #00bcd4; }
+    .header p { color: #aaa; }
+    .section-title { color: #00bcd4; border-bottom: 1px solid #3a3a3a; }
+    .summary-text { color: #bbb; background: #2e2e2e; border-left: 3px solid #00bcd4; }
+    .tech-stack { background: #2e2e2e; }
+    .tech-item { background: #2e3a3a; color: #b0e0e0; border: 1px solid #1a3a3a; }
+    .tech-item i { color: #00bcd4; }
+    .exp-card { background: #2e2e2e; border: 1px solid #3a3a3a; border-left: 3px solid #00bcd4; }
+    .exp-header h3 { color: #e8e8e8; }
+    .exp-company { color: #00bcd4; }
+    .exp-period { color: #777; }
+    .exp-project { color: #999; }
+    .proj-overview { color: #999; background: #272727; border-left: 2px solid #006064; }
+    .exp-list li { color: #b8b8b8; }
+    .exp-list li::before { color: #00bcd4; }
+    .tech-tag { background: #2e3a3a; color: #80deea; border: 1px solid #1a3a3a; }
+    .sidebar-card { background: #2a2a2a; border: 1px solid #3a3a3a; }
+    .profile h3 { color: #00bcd4; }
+    .profile p { color: #999; }
+    .profile-img { border: 2px solid #00bcd4; }
+    .sb-title { color: #e0e0e0; border-bottom: 2px solid #00bcd4; }
+    .contact-item { color: #aaa; }
+    .contact-item i { color: #00bcd4; }
+    .contact-item a { color: #aaa; }
+    .lang-item { color: #aaa; }
+    .lang-stars { color: #00bcd4; }
+    .hobby { background: #333; color: #bbb; border: 1px solid #3a3a3a; }
+    .hobby i { color: #00bcd4; }
+    .bio-text { color: #aaa; }
+    .footer { border-top: 1px solid #333; color: #555; }
+  
   </style>
 </head>
 <body>
 <div class="page">
-
   <div class="header">
     <h1>Pavel Tarlev</h1>
     <p>Senior Software Developer</p>
   </div>
-
   <div class="layout">
     <div class="main">
-
       <div class="section">
         <h2 class="section-title">Professional Summary</h2>
-        <p class="summary-text">Senior Software Developer with extensive experience in cloud architecture, microservices, and DevOps practices. Specialized in building scalable applications using modern technologies like AWS, Kubernetes, Docker, React, and TypeScript. Proven track record of optimizing performance, implementing CI/CD pipelines, and leading architectural improvements.</p>
+        <p class="summary-text">Proven Senior Software Developer with over 3 years of hands-on experience. Adept at designing and implementing innovative solutions, with a focus on scalability, efficiency, and cloud-native architectures.</p>
       </div>
-
-      <div class="section">
-        <h2 class="section-title">Technical Stack</h2>
-        <div class="tech-stack">
-          <div class="tech-item"><i class="fab fa-aws"></i><span>AWS</span></div>
-          <div class="tech-item"><i class="fab fa-aws"></i><span>Cognito</span></div>
-          <div class="tech-item"><i class="fab fa-aws"></i><span>API Gateway</span></div>
-          <div class="tech-item"><i class="fas fa-database"></i><span>PostgreSQL</span></div>
-          <div class="tech-item"><i class="fas fa-cube"></i><span>K8s</span></div>
-          <div class="tech-item"><i class="fab fa-docker"></i><span>Docker</span></div>
-          <div class="tech-item"><i class="fas fa-cogs"></i><span>Jenkins</span></div>
-          <div class="tech-item"><i class="fas fa-code"></i><span>Camel</span></div>
-          <div class="tech-item"><i class="fas fa-server"></i><span>NestJS</span></div>
-          <div class="tech-item"><i class="fas fa-cloud"></i><span>Terraform</span></div>
-          <div class="tech-item"><i class="fas fa-vial"></i><span>Jest</span></div>
-          <div class="tech-item"><i class="fab fa-java"></i><span>Java</span></div>
-          <div class="tech-item"><i class="fas fa-database"></i><span>MongoDB</span></div>
-          <div class="tech-item"><i class="fab fa-aws"></i><span>DynamoDB</span></div>
-          <div class="tech-item"><i class="fas fa-exchange-alt"></i><span>RabbitMQ</span></div>
-          <div class="tech-item"><i class="fas fa-network-wired"></i><span>Kong</span></div>
-          <div class="tech-item"><i class="fab fa-node-js"></i><span>Node.js</span></div>
-          <div class="tech-item"><i class="fab fa-vuejs"></i><span>Vue.js</span></div>
-          <div class="tech-item"><i class="fab fa-react"></i><span>React</span></div>
-          <div class="tech-item"><i class="fas fa-code"></i><span>TypeScript</span></div>
-        </div>
-      </div>
-
       <div class="section">
         <h2 class="section-title">Professional Experience</h2>
-
+        
         <div class="exp-card">
           <div class="exp-header">
             <h3>Senior Software Developer</h3>
@@ -319,7 +119,7 @@
               <span class="exp-period">04/2024 – Present</span>
             </div>
           </div>
-          <div class="exp-project">Altice Project — Telecommunications Platform</div>
+          <div class="exp-project">Altice Project</div>
           <p class="proj-overview">Altice USA (Optimum) delivers Internet, TV, Phone, and Mobile services via its Fiber Network to ~4.4 million customers across 21 states. The Amdocs engagement covers BSS/OSS modernization supporting convergent mobile and broadband services on a TM Forum-aligned microservices platform.</p>
           <ul class="exp-list">
             <li>Focused on performance optimization, identifying bottlenecks and implementing strategic enhancements</li>
@@ -329,10 +129,7 @@
             <li>Integrated Apache Camel for microservices communication</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">Java</span><span class="tech-tag">Kubernetes</span>
-            <span class="tech-tag">Docker</span><span class="tech-tag">Jenkins</span>
-            <span class="tech-tag">Apache Camel</span><span class="tech-tag">Apache Maven</span>
-            <span class="tech-tag">Perforce</span><span class="tech-tag">Jenkins CI/CD</span>
+            <span class="tech-tag">Java</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">Docker</span><span class="tech-tag">Jenkins</span><span class="tech-tag">Apache Camel</span><span class="tech-tag">Apache Maven</span><span class="tech-tag">Perforce</span><span class="tech-tag">Jenkins CI/CD</span>
           </div>
         </div>
 
@@ -341,10 +138,10 @@
             <h3>Mid-Level Software Developer</h3>
             <div class="exp-meta">
               <span class="exp-company">Amdocs</span>
-              <span class="exp-period">08/2021 – 04/2024</span>
+              <span class="exp-period">08/2022 – 04/2024</span>
             </div>
           </div>
-          <div class="exp-project">DBS Project — Digital Brands Suite</div>
+          <div class="exp-project">DBS Project</div>
           <p class="proj-overview">Amdocs Digital Brands Suite (DBS) is a cloud-native, multi-tenant SaaS BSS platform built on AWS, enabling telecom operators and MVNOs to launch and manage digital service offerings. The platform exposes 500+ microservices through TM Forum Open APIs covering product catalog, order management, billing, and customer management.</p>
           <ul class="exp-list">
             <li>Designed and implemented TM Forum (TMF) standard APIs using NestJS across product catalog, order management, and customer management domains</li>
@@ -355,24 +152,20 @@
             <li>Wrote unit and integration tests with Jest; optimized API response times and database query performance</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">AWS</span><span class="tech-tag">NestJS</span>
-            <span class="tech-tag">Terraform</span><span class="tech-tag">Jest</span>
-            <span class="tech-tag">Lambda</span><span class="tech-tag">MongoDB</span>
-            <span class="tech-tag">DynamoDB</span><span class="tech-tag">Cognito</span>
-            <span class="tech-tag">SNS</span><span class="tech-tag">S3</span>
-            <span class="tech-tag">API Gateway</span><span class="tech-tag">Jenkins CI/CD</span>
+            <span class="tech-tag">AWS</span><span class="tech-tag">NestJS</span><span class="tech-tag">Terraform</span><span class="tech-tag">Jest</span><span class="tech-tag">Lambda</span><span class="tech-tag">MongoDB</span><span class="tech-tag">DynamoDB</span><span class="tech-tag">Cognito</span><span class="tech-tag">SNS</span><span class="tech-tag">S3</span><span class="tech-tag">API Gateway</span><span class="tech-tag">Jenkins CI/CD</span>
           </div>
         </div>
 
         <div class="exp-card">
           <div class="exp-header">
-            <h3>Internship — Full Stack Developer</h3>
+            <h3>Internship - Full Stack Developer</h3>
             <div class="exp-meta">
               <span class="exp-company">WPX.net</span>
               <span class="exp-period">11/2021 – 06/2022</span>
             </div>
           </div>
-          <p class="proj-overview">WPX.net is a premium fully managed WordPress hosting provider serving thousands of businesses globally, known for ultra-fast loading times powered by a custom CDN with 41+ global endpoints, proactive daily malware scanning, and a "Fixed For You" expert support guarantee.</p>
+          
+          <p class="proj-overview">WPX.net is a premium fully managed WordPress hosting provider serving thousands of businesses globally, known for ultra-fast loading times powered by a custom CDN with 41+ global endpoints, proactive daily malware scanning, and a 'Fixed For You' expert support guarantee.</p>
           <ul class="exp-list">
             <li>Contributed to development and maintenance of a high-performance managed WordPress hosting platform serving thousands of businesses worldwide</li>
             <li>Developed REST APIs and microservices using Node.js, NestJS, and Vue.js to support core platform backend functionality</li>
@@ -381,55 +174,49 @@
             <li>Worked with CDN infrastructure optimisations and server-side performance improvements for ultra-fast page load times</li>
           </ul>
           <div class="tech-tags">
-            <span class="tech-tag">Node.js</span><span class="tech-tag">NestJS</span>
-            <span class="tech-tag">Vue.js</span><span class="tech-tag">Docker</span>
-            <span class="tech-tag">RabbitMQ</span><span class="tech-tag">Kong</span>
-            <span class="tech-tag">REST APIs</span>
+            <span class="tech-tag">Node.js</span><span class="tech-tag">NestJS</span><span class="tech-tag">Vue.js</span><span class="tech-tag">Docker</span><span class="tech-tag">RabbitMQ</span><span class="tech-tag">Kong</span><span class="tech-tag">REST APIs</span>
           </div>
         </div>
       </div>
-
-      <div class="footer">© 2024 Pavel Tarlev · Senior Software Developer</div>
-
+      <div class="footer">© 2026 Pavel Tarlev · Senior Software Developer</div>
     </div>
-
-    <div class="sidebar">
-      <div class="sidebar-card">
-        <div class="profile">
-          <div class="profile-img"><img src="profile-photo.jpg" alt="Pavel Tarlev"></div>
-          <h3>Pavel Tarlev</h3>
-          <p>Senior Software Developer</p>
-        </div>
-        <div class="sb-section">
-          <h4 class="sb-title">Contact</h4>
-          <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:paveltarlev85@gmail.com">paveltarlev85@gmail.com</a></div>
-          <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+359885141412">+359 885141412</a></div>
-          <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/pavel-tarlev-448a4814a/">linkedin.com/in/paveltarlev</a></div>
-          <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/PavelTarlev1">github.com/PavelTarlev1</a></div>
-          <div class="contact-item"><i class="fas fa-globe"></i><a href="https://d3mlcny436u57f.cloudfront.net/">Personal Website</a></div>
-        </div>
-        <div class="sb-section">
-          <h4 class="sb-title">Languages</h4>
-          <div class="lang-item"><span>English</span><span class="lang-stars">★★★★★</span></div>
+    
+      <div class="sidebar">
+        <div class="sidebar-card">
+          <div class="profile">
+            <div class="profile-img"><img src="profile-photo.jpg" alt="Pavel Tarlev"></div>
+            <h3>Pavel Tarlev</h3>
+            <p>Senior Software Developer</p>
+          </div>
+          <div class="sb-section">
+            <h4 class="sb-title">Contact</h4>
+            <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:paveltarlev85@gmail.com">paveltarlev85@gmail.com</a></div>
+            <div class="contact-item"><i class="fas fa-phone"></i><a href="tel:+359885141412">+359 885141412</a></div>
+            <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/pavel-tarlev-448a4814a/">linkedin.com/in/pavel-tarlev-448a4814a</a></div>
+            <div class="contact-item"><i class="fab fa-github"></i><a href="https://github.com/paveltarlev">github.com/paveltarlev</a></div>
+            <div class="contact-item"><i class="fas fa-globe"></i><a href="https://paveltarlev1.github.io/My-AWS-hosted-CV-website/">Personal Website</a></div>
+          </div>
+          <div class="sb-section">
+            <h4 class="sb-title">Languages</h4>
+            <div class="lang-item"><span>English</span><span class="lang-stars">★★★★★</span></div>
           <div class="lang-item"><span>Russian</span><span class="lang-stars">★★★★☆</span></div>
           <div class="lang-item"><span>Bulgarian</span><span class="lang-stars">★★★★★</span></div>
-        </div>
-        <div class="sb-section">
-          <h4 class="sb-title">Hobbies</h4>
-          <div class="hobbies">
-            <div class="hobby"><i class="fas fa-music"></i><span>Music</span></div>
-            <div class="hobby"><i class="fas fa-motorcycle"></i><span>Moto</span></div>
+          </div>
+          <div class="sb-section">
+            <h4 class="sb-title">Hobbies</h4>
+            <div class="hobbies">
+              <div class="hobby"><i class="fas fa-music"></i><span>Music</span></div>
+            <div class="hobby"><i class="fas fa-motorcycle"></i><span>Motorcycle</span></div>
             <div class="hobby"><i class="fas fa-plane"></i><span>Travel</span></div>
             <div class="hobby"><i class="fas fa-hiking"></i><span>Hiking</span></div>
+            </div>
+          </div>
+          <div class="sb-section">
+            <h4 class="sb-title">Bio</h4>
+            <p class="bio-text">My journey began with civil engineering studies at PGSAG in Stara Zagora and continued at UASG Sofia. During this time, I developed freelance projects including a reservoir calculation program for Denev OOD. I then transitioned into a Technical Manager role on large-scale projects, which laid the foundation for my technical leadership skills. This diverse background in engineering, project management, and software development has shaped my problem-solving approach and ability to deliver complex, scalable solutions.</p>
           </div>
         </div>
-        <div class="sb-section">
-          <h4 class="sb-title">Bio</h4>
-          <p class="bio-text">My journey began with civil engineering studies at PGSAG in Stara Zagora and continued at UASG Sofia. I developed freelance projects before transitioning into a Technical Manager role on large-scale projects. This diverse background in engineering, project management, and software development has shaped my problem-solving approach and ability to deliver complex, scalable solutions.</p>
-        </div>
       </div>
-    </div>
-
   </div>
 </div>
 </body>

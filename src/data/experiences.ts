@@ -21,7 +21,7 @@ export const experiences: IExperience[] = [
     title: "Mid-Level Software Developer",
     company: "Amdocs",
     project: "DBS Project",
-    period: "08/2021 - 04/2024",
+    period: "08/2022 - 04/2024",
     description: [
       "Designed and implemented TM Forum (TMF) standard APIs using NestJS across product catalog, order management, and customer management domains",
       "Built and maintained domain-driven microservices using AWS Lambda for event-driven business logic with automatic scaling across 200+ integrated event sources",
