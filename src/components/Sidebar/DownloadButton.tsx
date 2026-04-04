@@ -77,7 +77,7 @@ export const DownloadButton: React.FC = () => {
       {open && (
         <div style={dropdownStyle}>
           <a
-            href="/Pavel_Tarlev_CV_Black.pdf"
+            href="./Pavel_Tarlev_CV_Black.pdf"
             download="Pavel_Tarlev_CV_Black.pdf"
             style={{ ...optionStyle, color: '#00bcd4', backgroundColor: '#1a1a1a' }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#242424')}
@@ -88,7 +88,7 @@ export const DownloadButton: React.FC = () => {
             Dark Version
           </a>
           <a
-            href="/Pavel_Tarlev_CV_White.pdf"
+            href="./Pavel_Tarlev_CV_White.pdf"
             download="Pavel_Tarlev_CV_White.pdf"
             style={{ ...optionStyle, color: '#ff6600', backgroundColor: darkMode ? '#2a2a2a' : '#fff8f4' }}
             onMouseEnter={e => (e.currentTarget.style.backgroundColor = darkMode ? '#333' : '#fff0e6')}
