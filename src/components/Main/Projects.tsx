@@ -1,6 +1,20 @@
 import React from 'react';
 import { projects } from '../../data/projects';
 import { useTheme } from '../Layout/ThemeProvider';
+import { FaReact, FaGithub, FaPython, FaDesktop } from 'react-icons/fa';
+import { SiTypescript, SiVite, SiTailwindcss, SiGithubactions } from 'react-icons/si';
+
+const techIconMap: Record<string, React.ReactElement> = {
+  'React':           <FaReact />,
+  'TypeScript':      <SiTypescript />,
+  'Vite':            <SiVite />,
+  'Tailwind CSS':    <SiTailwindcss />,
+  'GitHub Actions':  <SiGithubactions />,
+  'GitHub Pages':    <FaGithub />,
+  'Python':          <FaPython />,
+  'PyQt5':           <FaDesktop />,
+  'PyInstaller':     <FaDesktop />,
+};
 
 interface ProjectsProps {
   // Props can be added here if needed
@@ -70,12 +84,13 @@ export const Projects: React.FC<ProjectsProps> = () => {
                 {project.tech.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-3 py-1 text-sm rounded-full"
+                    className="flex items-center gap-1 px-3 py-1 text-sm rounded-full"
                     style={{
                       backgroundColor: theme.accentLight,
                       color: theme.accent
                     }}
                   >
+                    {techIconMap[tech] && <span style={{ fontSize: '13px' }}>{techIconMap[tech]}</span>}
                     {tech}
                   </span>
                 ))}
