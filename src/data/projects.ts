@@ -7,8 +7,8 @@ export const projects: IProject[] = [
     tech: ["Python", "PyQt5", "PyInstaller"],
   },
   {
-    title: "AWS-Hosted CV Website",
-    description: "Personal CV website hosted on AWS S3 + CloudFront, built with React, TypeScript, and Vite. Features dark/light mode, PDF export, and infrastructure managed with Terraform.",
-    tech: ["React", "TypeScript", "AWS S3", "CloudFront", "Terraform", "Vite"],
+    title: "CV Website",
+    description: "Personal CV website hosted on GitHub Pages, built with React, TypeScript, and Vite. Features dark/light mode, PDF export, and automated deployment via GitHub Actions.",
+    tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
   }
 ];
