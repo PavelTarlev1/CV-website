@@ -4,8 +4,22 @@ import { ContactInfo } from './ContactInfo';
 import { DownloadButton } from './DownloadButton';
 import { StaticSection } from './StaticSection';
 import { useTheme } from '../Layout/ThemeProvider';
-import { FaMusic, FaMotorcycle, FaPlane, FaHiking } from 'react-icons/fa';
+import { FaMusic, FaMotorcycle, FaPlane, FaHiking, FaReact, FaGithub, FaPython, FaDesktop } from 'react-icons/fa';
+import { SiTypescript, SiVite, SiTailwindcss, SiGithubactions } from 'react-icons/si';
 import { languages, hobbies, about } from '../../config/personalInfo';
+import { projects } from '../../data/projects';
+
+const techIconMap: Record<string, React.ReactElement> = {
+  'React':          <FaReact />,
+  'TypeScript':     <SiTypescript />,
+  'Vite':           <SiVite />,
+  'Tailwind CSS':   <SiTailwindcss />,
+  'GitHub Actions': <SiGithubactions />,
+  'GitHub Pages':   <FaGithub />,
+  'Python':         <FaPython />,
+  'PyQt5':          <FaDesktop />,
+  'PyInstaller':    <FaDesktop />,
+};
 
 interface SidebarProps {
   openSections: {
@@ -162,28 +176,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
     }}>
       <StaticSection title="Personal Projects">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div>
-            <div style={{ color: theme.text, fontWeight: '600', fontSize: '14px', marginBottom: '4px' }}>Denev Calibration Suite</div>
-            <div style={{ color: theme.textSecondary, fontSize: '13px', lineHeight: '1.5', marginBottom: '6px' }}>
-              Desktop app for tank volume calibration supporting multiple tank shapes (horizontal, vertical, inclined, rectangular, wine). Features volume calculations, calibration history, and PDF report export.
+          {projects.map((project, i) => (
+            <div key={i}>
+              <div style={{ color: theme.text, fontWeight: '600', fontSize: '14px', marginBottom: '4px' }}>{project.title}</div>
+              <div style={{ color: theme.textSecondary, fontSize: '13px', lineHeight: '1.5', marginBottom: '6px' }}>{project.description}</div>
+              <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
+                {project.tech.map(tag => (
+                  <span key={tag} style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px', backgroundColor: theme.bg, border: `1px solid ${theme.border}`, borderRadius: '12px', padding: '2px 8px', color: theme.textSecondary }}>
+                    {techIconMap[tag] && <span style={{ fontSize: '11px', color: theme.accent }}>{techIconMap[tag]}</span>}
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {['Python', 'PyQt5', 'PyInstaller', 'Private'].map(tag => (
-                <span key={tag} style={{ fontSize: '11px', backgroundColor: theme.bg, border: `1px solid ${theme.border}`, borderRadius: '12px', padding: '2px 8px', color: theme.textSecondary }}>{tag}</span>
-              ))}
-            </div>
-          </div>
-          <div>
-            <div style={{ color: theme.text, fontWeight: '600', fontSize: '14px', marginBottom: '4px' }}>AWS-Hosted CV Website</div>
-            <div style={{ color: theme.textSecondary, fontSize: '13px', lineHeight: '1.5', marginBottom: '6px' }}>
-              Personal CV website hosted on AWS S3 + CloudFront, built with React, TypeScript, and Terraform.
-            </div>
-            <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {['React', 'TypeScript', 'AWS', 'Private'].map(tag => (
-                <span key={tag} style={{ fontSize: '11px', backgroundColor: theme.bg, border: `1px solid ${theme.border}`, borderRadius: '12px', padding: '2px 8px', color: theme.textSecondary }}>{tag}</span>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
       </StaticSection>
     </div>
