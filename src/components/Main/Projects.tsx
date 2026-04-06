@@ -14,6 +14,10 @@ const techIconMap: Record<string, React.ReactElement> = {
   'Python':          <FaPython />,
   'PyQt5':           <FaDesktop />,
   'PyInstaller':     <FaDesktop />,
+  'PyQt6':           <FaDesktop />,
+  'Bluetooth':       <FaDesktop />,
+  'D-Bus':           <FaDesktop />,
+  'Linux':           <FaDesktop />,
 };
 
 interface ProjectsProps {
