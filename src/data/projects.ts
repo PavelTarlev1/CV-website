@@ -11,6 +11,7 @@ export const projects: IProject[] = [
     description: "Bluetooth hands-free kit for Linux. Makes your computer act like a car speakerphone — handles incoming/outgoing calls via HFP, syncs contacts from phone via PBAP, detects active VoIP apps (Teams, Zoom, Meet, Slack, Discord), and shows pop-up call notifications.",
     tech: ["Python", "PyQt6", "Bluetooth", "D-Bus", "Linux"],
     githubLink: "https://github.com/PavelTarlev1/handsfree-linux",
+    ongoing: true,
   },
   {
     title: "CV Website",

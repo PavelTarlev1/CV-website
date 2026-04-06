@@ -17,6 +17,7 @@ export interface IProject {
   githubLink?: string;
   liveDemoLink?: string;
   imageUrl?: string;
+  ongoing?: boolean;
 }
 
 export interface ITheme {

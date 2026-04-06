@@ -1,4 +1,5 @@
 import React from 'react';
+import { CraneIcon } from '../Shared/CraneIcon';
 import { projects } from '../../data/projects';
 import { useTheme } from '../Layout/ThemeProvider';
 import { FaReact, FaGithub, FaPython, FaDesktop, FaLinux, FaBluetooth, FaNetworkWired } from 'react-icons/fa';
@@ -69,11 +70,12 @@ export const Projects: React.FC<ProjectsProps> = () => {
             )}
 
             <div className="p-6">
-              <h3 
-                className="text-xl font-semibold mb-2"
+              <h3
+                className="text-xl font-semibold mb-2 flex items-center gap-2"
                 style={{ color: theme.text }}
               >
                 {project.title}
+                {project.ongoing && <CraneIcon size={28} color={theme.accent} />}
               </h3>
 
               <p 
