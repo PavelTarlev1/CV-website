@@ -17,5 +17,6 @@ export const projects: IProject[] = [
     title: "CV Website",
     description: "Personal CV website hosted on GitHub Pages, built with React, TypeScript, and Vite. Features dark/light mode, PDF export, and automated deployment via GitHub Actions.",
     tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "GitHub Actions", "GitHub Pages"],
+    ongoing: true,
   }
 ];
