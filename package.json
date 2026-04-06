@@ -38,12 +38,12 @@
   "main": "eslint.config.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/PavelTarlev1/My-AWS-hosted-CV-website.git"
+    "url": "git+https://github.com/PavelTarlev1/cv-website.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/PavelTarlev1/My-AWS-hosted-CV-website/issues"
+    "url": "https://github.com/PavelTarlev1/cv-website/issues"
   },
-  "homepage": "https://github.com/PavelTarlev1/My-AWS-hosted-CV-website#readme"
+  "homepage": "https://paveltarlev1.github.io/cv-website/"
 }
