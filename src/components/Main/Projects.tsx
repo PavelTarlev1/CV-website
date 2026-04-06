@@ -1,7 +1,7 @@
 import React from 'react';
 import { projects } from '../../data/projects';
 import { useTheme } from '../Layout/ThemeProvider';
-import { FaReact, FaGithub, FaPython, FaDesktop } from 'react-icons/fa';
+import { FaReact, FaGithub, FaPython, FaDesktop, FaLinux, FaBluetooth, FaNetworkWired } from 'react-icons/fa';
 import { SiTypescript, SiVite, SiTailwindcss, SiGithubactions } from 'react-icons/si';
 
 const techIconMap: Record<string, React.ReactElement> = {
@@ -15,9 +15,9 @@ const techIconMap: Record<string, React.ReactElement> = {
   'PyQt5':           <FaDesktop />,
   'PyInstaller':     <FaDesktop />,
   'PyQt6':           <FaDesktop />,
-  'Bluetooth':       <FaDesktop />,
-  'D-Bus':           <FaDesktop />,
-  'Linux':           <FaDesktop />,
+  'Bluetooth':       <FaBluetooth />,
+  'D-Bus':           <FaNetworkWired />,
+  'Linux':           <FaLinux />,
 };
 
 interface ProjectsProps {
