@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Crane Demo</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+    }
+    canvas { display: block; }
+    .label {
+      color: #ff6600;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 16px;
+      animation: blink 1.6s step-start infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.2; }
+    }
+  </style>
+</head>
+<body>
+  <canvas id="c" width="340" height="280"></canvas>
+  <div class="label">Under Construction</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+
+const ORANGE = '#ff6600';
+const DARK   = '#cc4400';
+const W = canvas.width;
+const H = canvas.height;
+
+// Crane geometry
+const PIVOT_X    = 160;
+const PIVOT_Y    = 80;
+const BOOM_LEN   = 120;   // full jib length
+const COUNTER    = 48;    // counter-jib length
+const TOWER_H    = 110;
+const TROLLEY_T  = 90;    // trolley distance from pivot along jib
+const CABLE_MIN  = 16;
+const CABLE_MAX  = 95;
+
+// Animation phases
+const PHASES = [
+  { name: 'idle',       dur: 400  },
+  { name: 'lower',      dur: 1400 },
+  { name: 'pickup',     dur: 500  },
+  { name: 'raise',      dur: 1400 },
+  { name: 'rotate',     dur: 2400 },   // 0° → 180° (around vertical axis)
+  { name: 'lower2',     dur: 1400 },
+  { name: 'drop',       dur: 500  },
+  { name: 'raise2',     dur: 1200 },
+  { name: 'rotateBack', dur: 2400 },   // 180° → 360°
+];
+
+let phaseIdx  = 0;
+let phaseStart = null;
+let spinDeg    = 0;      // 0–360, rotation around vertical axis
+let cableLen   = CABLE_MIN;
+let loadVisible = false;
+
+function easeInOut(t) { return t < 0.5 ? 2*t*t : -1+(4-2*t)*t; }
+function lerp(a, b, t) { return a + (b - a) * t; }
+
+// Project a horizontal arm length using cos(spinDeg) — simulates 3D rotation
+function projX(len) { return len * Math.cos(spinDeg * Math.PI / 180); }
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Ground
+  ctx.strokeStyle = '#333';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(0, H - 28);
+  ctx.lineTo(W, H - 28);
+  ctx.stroke();
+
+  const towerTop = PIVOT_Y;
+  const towerBot = PIVOT_Y + TOWER_H;
+  const tx = PIVOT_X - 8;
+
+  // Tower body
+  ctx.fillStyle = ORANGE;
+  ctx.fillRect(tx, towerTop, 16, TOWER_H);
+
+  // Tower cross-braces
+  ctx.strokeStyle = DARK;
+  ctx.lineWidth = 1.5;
+  for (let y = towerTop; y < towerBot - 10; y += 28) {
+    ctx.beginPath(); ctx.moveTo(tx,    y);    ctx.lineTo(tx+16, y+20); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(tx+16, y);    ctx.lineTo(tx,    y+20); ctx.stroke();
+  }
+
+  // Base feet
+  ctx.fillStyle = DARK;
+  ctx.fillRect(tx - 12, towerBot, 40, 8);
+  ctx.beginPath(); ctx.arc(tx - 8,  towerBot + 8, 5, 0, Math.PI*2); ctx.fill();
+  ctx.beginPath(); ctx.arc(tx + 24, towerBot + 8, 5, 0, Math.PI*2); ctx.fill();
+
+  // Vertical mast above pivot
+  ctx.strokeStyle = ORANGE;
+  ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(PIVOT_X, PIVOT_Y);
+  ctx.lineTo(PIVOT_X, PIVOT_Y - 32);
+  ctx.stroke();
+
+  // --- JIB & COUNTER-JIB (projected) ---
+  // cos(spinDeg) maps the horizontal extent: +ve = tip is to the right, -ve = tip is to the left
+  const jibTipX     = PIVOT_X + projX(BOOM_LEN);
+  const counterTipX = PIVOT_X - projX(COUNTER);
+  const trolleyX    = PIVOT_X + projX(TROLLEY_T);
+  const armY        = PIVOT_Y;
+
+  // Counter-jib
+  ctx.fillStyle = DARK;
+  ctx.beginPath();
+  ctx.rect(Math.min(PIVOT_X, counterTipX), armY - 5,
+           Math.abs(projX(COUNTER)), 8);
+  ctx.fill();
+
+  // Counter weight
+  ctx.fillStyle = ORANGE;
+  const cwX = counterTipX < PIVOT_X ? counterTipX - 6 : counterTipX;
+  ctx.fillRect(cwX - 8, armY - 9, 16, 16);
+
+  // Main jib
+  ctx.fillStyle = ORANGE;
+  ctx.beginPath();
+  ctx.rect(Math.min(PIVOT_X, jibTipX), armY - 6,
+           Math.abs(projX(BOOM_LEN)), 10);
+  ctx.fill();
+
+  // Support wires from mast tip
+  ctx.strokeStyle = '#ff9944';
+  ctx.lineWidth = 1.5;
+  ctx.beginPath();
+  ctx.moveTo(PIVOT_X, PIVOT_Y - 32);
+  ctx.lineTo(jibTipX, armY);
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(PIVOT_X, PIVOT_Y - 32);
+  ctx.lineTo(counterTipX, armY);
+  ctx.stroke();
+
+  // Trolley
+  ctx.fillStyle = '#555';
+  ctx.fillRect(trolleyX - 8, armY - 8, 16, 6);
+
+  // Cable
+  ctx.strokeStyle = '#ffcc44';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(trolleyX, armY);
+  ctx.lineTo(trolleyX, armY + cableLen);
+  ctx.stroke();
+
+  // Hook
+  ctx.strokeStyle = '#ccc';
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(trolleyX + 3, armY + cableLen + 5, 5, Math.PI * 0.2, Math.PI * 1.2);
+  ctx.stroke();
+
+  // Load box
+  if (loadVisible) {
+    const lx = trolleyX - 14;
+    const ly = armY + cableLen + 10;
+    ctx.fillStyle = ORANGE;
+    ctx.strokeStyle = DARK;
+    ctx.lineWidth = 1.5;
+    ctx.fillRect(lx, ly, 28, 22);
+    ctx.strokeRect(lx, ly, 28, 22);
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(lx, ly);     ctx.lineTo(lx+28, ly+22);
+    ctx.moveTo(lx+28, ly);  ctx.lineTo(lx,    ly+22);
+    ctx.stroke();
+  }
+
+  // Pivot cap
+  ctx.fillStyle = '#ffcc44';
+  ctx.beginPath();
+  ctx.arc(PIVOT_X, PIVOT_Y, 5, 0, Math.PI*2);
+  ctx.fill();
+}
+
+function tick(ts) {
+  if (phaseStart === null) phaseStart = ts;
+  const phase = PHASES[phaseIdx];
+  let t  = Math.min((ts - phaseStart) / phase.dur, 1);
+  const et = easeInOut(t);
+
+  switch (phase.name) {
+    case 'idle':
+      spinDeg = 0; cableLen = CABLE_MIN; loadVisible = false;
+      break;
+    case 'lower':
+      cableLen = lerp(CABLE_MIN, CABLE_MAX, et); loadVisible = false;
+      break;
+    case 'pickup':
+      cableLen = CABLE_MAX; loadVisible = true;
+      break;
+    case 'raise':
+      cableLen = lerp(CABLE_MAX, CABLE_MIN, et); loadVisible = true;
+      break;
+    case 'rotate':
+      // Spin 180° around vertical axis — boom foreshortens through 0 then re-extends
+      spinDeg = lerp(0, 180, et); cableLen = CABLE_MIN; loadVisible = true;
+      break;
+    case 'lower2':
+      spinDeg = 180; cableLen = lerp(CABLE_MIN, CABLE_MAX, et); loadVisible = true;
+      break;
+    case 'drop':
+      spinDeg = 180; cableLen = CABLE_MAX; loadVisible = false;
+      break;
+    case 'raise2':
+      spinDeg = 180; cableLen = lerp(CABLE_MAX, CABLE_MIN, et); loadVisible = false;
+      break;
+    case 'rotateBack':
+      spinDeg = lerp(180, 360, et); cableLen = CABLE_MIN; loadVisible = false;
+      break;
+  }
+
+  draw();
+
+  if (t >= 1) {
+    if (phase.name === 'rotateBack') spinDeg = 0;
+    phaseIdx = (phaseIdx + 1) % PHASES.length;
+    phaseStart = ts;
+  }
+
+  requestAnimationFrame(tick);
+}
+
+draw();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
