@@ -1,34 +1,38 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 interface CraneIconProps {
   size?: number;
   color?: string;
 }
 
-export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff6600' }) => {
+export const CraneIcon: React.FC<CraneIconProps> = ({ size = 40, color = '#ff6600' }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const rafRef    = useRef<number>(0);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width  = size * dpr;
+    canvas.height = size * dpr;
+    canvas.style.width  = `${size}px`;
+    canvas.style.height = `${size}px`;
+
     const ctx = canvas.getContext('2d')!;
+    ctx.scale(dpr, dpr);
 
-    // Scale all geometry to `size`
-    const S = size;
-    const dark = color + 'aa';
+    const dark = color + '99';
+    const sc   = (v: number) => (v / 48) * size;
 
-    // Geometry (designed at 48px, scaled)
-    const sc = (v: number) => (v / 48) * S;
-
-    const PIVOT_X   = sc(24);
-    const PIVOT_Y   = sc(16);
-    const BOOM      = sc(22);
-    const COUNTER   = sc(9);
-    const TOWER_H   = sc(22);
-    const TROLL_D   = sc(16);
-    const C_MIN     = sc(3);
-    const C_MAX     = sc(18);
+    const PIVOT_X  = sc(24);
+    const PIVOT_Y  = sc(17);
+    const BOOM     = sc(22);
+    const COUNTER  = sc(9);
+    const TOWER_H  = sc(22);
+    const TROLL_D  = sc(16);
+    const C_MIN    = sc(3);
+    const C_MAX    = sc(18);
 
     const PHASES = [
       { name: 'idle',       dur: 400  },
@@ -53,10 +57,10 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
     const projX = (len: number) => len * Math.cos(spinDeg * Math.PI / 180);
 
     function draw() {
-      ctx.clearRect(0, 0, S, S);
+      ctx.clearRect(0, 0, size, size);
 
-      const towerX  = PIVOT_X - sc(1.5);
-      const towerW  = sc(3);
+      const towerX   = PIVOT_X - sc(1.5);
+      const towerW   = sc(3);
       const towerBot = PIVOT_Y + TOWER_H;
 
       // Tower
@@ -67,7 +71,7 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
       ctx.fillStyle = dark;
       ctx.fillRect(towerX - sc(2), towerBot, towerW + sc(4), sc(2));
 
-      // Mast above pivot
+      // Mast
       ctx.strokeStyle = color;
       ctx.lineWidth = sc(0.8);
       ctx.beginPath();
@@ -75,10 +79,10 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
       ctx.lineTo(PIVOT_X, PIVOT_Y - sc(6));
       ctx.stroke();
 
-      const jibTipX    = PIVOT_X + projX(BOOM);
+      const jibTipX     = PIVOT_X + projX(BOOM);
       const counterTipX = PIVOT_X - projX(COUNTER);
-      const trolleyX   = PIVOT_X + projX(TROLL_D);
-      const armY       = PIVOT_Y;
+      const trolleyX    = PIVOT_X + projX(TROLL_D);
+      const armY        = PIVOT_Y;
 
       // Counter-jib
       ctx.fillStyle = dark;
@@ -86,7 +90,6 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
         Math.min(PIVOT_X, counterTipX), armY - sc(1),
         Math.abs(projX(COUNTER)), sc(2)
       );
-      // Counter weight
       ctx.fillStyle = color;
       ctx.fillRect(counterTipX - sc(2), armY - sc(2), sc(4), sc(4));
 
@@ -98,19 +101,13 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
       );
 
       // Support wires
-      ctx.strokeStyle = color + '88';
+      ctx.strokeStyle = color + '66';
       ctx.lineWidth = sc(0.5);
-      ctx.beginPath();
-      ctx.moveTo(PIVOT_X, PIVOT_Y - sc(6));
-      ctx.lineTo(jibTipX, armY);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(PIVOT_X, PIVOT_Y - sc(6));
-      ctx.lineTo(counterTipX, armY);
-      ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PIVOT_X, PIVOT_Y - sc(6)); ctx.lineTo(jibTipX, armY);     ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(PIVOT_X, PIVOT_Y - sc(6)); ctx.lineTo(counterTipX, armY); ctx.stroke();
 
       // Cable
-      ctx.strokeStyle = color + 'cc';
+      ctx.strokeStyle = color + 'bb';
       ctx.lineWidth = sc(0.5);
       ctx.beginPath();
       ctx.moveTo(trolleyX, armY);
@@ -122,9 +119,9 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
         const lx = trolleyX - sc(2.5);
         const ly = armY + cableLen + sc(1);
         ctx.fillStyle = color;
-        ctx.fillRect(lx, ly, sc(5), sc(4));
         ctx.strokeStyle = dark;
         ctx.lineWidth = sc(0.4);
+        ctx.fillRect(lx, ly, sc(5), sc(4));
         ctx.strokeRect(lx, ly, sc(5), sc(4));
       }
 
@@ -143,14 +140,14 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
 
       switch (phase.name) {
         case 'idle':        spinDeg = 0; cableLen = C_MIN; loadOn = false; break;
-        case 'lower':       cableLen = lerp(C_MIN, C_MAX, et); loadOn = false; break;
+        case 'lower':       cableLen = lerp(C_MIN, C_MAX, et); break;
         case 'pickup':      cableLen = C_MAX; loadOn = true; break;
         case 'raise':       cableLen = lerp(C_MAX, C_MIN, et); loadOn = true; break;
         case 'rotate':      spinDeg = lerp(0, 180, et); cableLen = C_MIN; loadOn = true; break;
         case 'lower2':      spinDeg = 180; cableLen = lerp(C_MIN, C_MAX, et); loadOn = true; break;
         case 'drop':        spinDeg = 180; cableLen = C_MAX; loadOn = false; break;
-        case 'raise2':      spinDeg = 180; cableLen = lerp(C_MAX, C_MIN, et); loadOn = false; break;
-        case 'rotateBack':  spinDeg = lerp(180, 360, et); cableLen = C_MIN; loadOn = false; break;
+        case 'raise2':      spinDeg = 180; cableLen = lerp(C_MAX, C_MIN, et); break;
+        case 'rotateBack':  spinDeg = lerp(180, 360, et); cableLen = C_MIN; break;
       }
 
       draw();
@@ -170,5 +167,10 @@ export const CraneIcon: React.FC<CraneIconProps> = ({ size = 48, color = '#ff660
     return () => cancelAnimationFrame(rafRef.current);
   }, [size, color]);
 
-  return <canvas ref={canvasRef} width={size} height={size} style={{ display: 'block' }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ display: 'inline-block', verticalAlign: 'middle' }}
+    />
+  );
 };
